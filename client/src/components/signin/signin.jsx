@@ -1,11 +1,12 @@
 import React from 'react'
+import './signin.css'
 
-const signin = () => {
+const Signin = () => {
   return (
-    <div>
-      
+    <div className='signinContainer'>
+      Sign In Modal will be here
     </div>
   )
 }
 
-export default signin
+export default Signin
