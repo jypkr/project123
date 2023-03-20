@@ -12,6 +12,8 @@ app.use(cors());
 const db = require('./models');
 
 
-app.listen(3001, () => {
-  console.log('Server started on port 3001');
+db.sequelize.sync().then(() => {
+    app.listen(process.env.PORT || 3001, () => {
+        console.log(`Server is running on port ${process.env.PORT || 3001}`);
+    });
 });
