@@ -4,6 +4,7 @@ import './home.css';
 import Navbar from '../../components/navBar/Navbar';
 import SearchBar from '../../components/searchBar/SearchBar';
 import CronList from '../../components/cronList/CronList';
+//import Siginin from '../signin/Siginin';
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Navbar />
       <SearchBar />
       <CronList />
+   
     </div>
   )
 }
