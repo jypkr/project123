@@ -1,7 +1,7 @@
-.signinContainer {
+.signupContainer {
     border: 1px solid #ccc;
 }
 
-.signinContainer form {
+.signupContainer form {
     display: flex;
 }
