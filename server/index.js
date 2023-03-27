@@ -12,8 +12,7 @@ app.use(cors());
 const db = require(`./models`);
 
 // Routers
-
-app.use(require("./routes/Users"));
+app.use(require("./routes"));
 
 db.sequelize.sync().then(() => {
     app.listen(process.env.PORT || 3001, () => {

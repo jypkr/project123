@@ -19,12 +19,11 @@ const Signin = () => {
     password: Yup.string().min(6).required("")
   });
 
-
   return (
     <div className='signinPage'>
+      Sign in
       <Formik 
         initialValues={initialValues} 
-        
         validationSchema={validationSchema}
       >
         <Form>
