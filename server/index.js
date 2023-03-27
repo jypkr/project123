@@ -9,8 +9,10 @@ app.use(express.json());
 app.use(cors());
 
 // connect to database
-const db = require('./models');
+const db = require(`./models`);
 
+// Routers
+app.use(require("./routes"));
 
 db.sequelize.sync().then(() => {
     app.listen(process.env.PORT || 3001, () => {
