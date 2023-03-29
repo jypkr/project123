@@ -1,24 +1,29 @@
-require('dotenv').config();
-
-// start server with express
 const express = require('express');
+const config = require('./config');
 const app = express();
 const cors = require('cors');
+const connectDB = require("./loaders/db");
+const db = require('./models');
+const routes = require('./routes')
+require('dotenv').config();
 
+connectDB(); // connect to the database.
+
+//parses the request body and converts it to an object with key-value pairs
+app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(cors());
 
-// connect to database
-const db = require(`./models`);
+// Router
+app.use(routes);
 
-// Routers
-app.use(require("./routes"));
-
-db.sequelize.sync().then(() => {
-    app.listen(process.env.PORT || 3001, () => {
-        console.log(`Server is running on port ${process.env.PORT || 3001}`);
-    });
-
-    // start cronjob
-    require('./utils/cronjob');
+app.listen(process.env.PORT || 3001, () => {
+    console.log(`Server is running on port ${process.env.PORT || 3001}`);
+}).on("error", (err) => {
+    console.error(err);
+    process.exit(1);
 });
+
+// Run Cronjob
+require('./utils/cronjob.jsx');
+
